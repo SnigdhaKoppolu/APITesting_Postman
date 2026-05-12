@@ -1,0 +1,333 @@
+{
+  "info": {
+    "_postman_id": "ed4ab7b7-2e8d-4c9a-93fd-e33357cd14ed",
+    "name": "reqresAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39052735"
+  },
+  "item": [
+    {
+      "name": "ListUser",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"tc01\", function(){\r",
+              "    console.log(\"hello\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"tc02\", function(){\r",
+              "    console.log(\"hi\");\r",
+              "} );\r",
+              "\r",
+              "pm.test(\"tc03\", function(){\r",
+              "    const responsebody = pm.response.json();\r",
+              "    const responsecode = pm.response.code;\r",
+              "    const responsestatus = pm.response.status;\r",
+              "    const id12 = responsebody.data[0].id;\r",
+              "    const page = responsebody.page;\r",
+              "\r",
+              "    let size = responsebody.data.length;\r",
+              "\r",
+              "    console.log(size);\r",
+              "    console.log(id12);\r",
+              "    console.log(page);\r",
+              "    console.log(responsebody);\r",
+              "    console.log(responsecode);\r",
+              "    console.log(responsestatus);\r",
+              "    \r",
+              "    pm.expect(responsecode).to.eql(200);\r",
+              "    pm.expect(responsestatus).to.eql(\"OK\");\r",
+              "    pm.expect(responsebody).to.not.eql({});\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres_884cecb0a93345c980b7781c1d5a0ad3",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURI}}/api/users",
+          "host": [
+            "{{baseURI}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ListUser_Query_Params",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"tc04\", function(){\r",
+              "    console.log(\"Success response status code 200 OK\");\r",
+              "    console.log(pm.response.status);\r",
+              "\r",
+              "    const responsecode = pm.response.code;\r",
+              "    const page = pm.response.json();\r",
+              "    const id = page.data[0].id; \r",
+              "\r",
+              "    console.log(page);\r",
+              "    console.log(id);\r",
+              "    console.log(responsecode);\r",
+              "    console.log(pm.response.json());\r",
+              "\r",
+              "    pm.expect(responsecode).to.eql(200);\r",
+              "    pm.expect(page.page).to.eql(2);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres_884cecb0a93345c980b7781c1d5a0ad3",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURI}}/api/users?page=2",
+          "host": [
+            "{{baseURI}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ListUser_Query_Params_Multiple",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres_884cecb0a93345c980b7781c1d5a0ad3",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURI}}/api/users?first_name=Tobias&id=9&email=tobias.funke@reqres.in",
+          "host": [
+            "{{baseURI}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "first_name",
+              "value": "Tobias"
+            },
+            {
+              "key": "id",
+              "value": "9"
+            },
+            {
+              "key": "email",
+              "value": "tobias.funke@reqres.in"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ListUser_Query_Params_Multiple_IncorrectData",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres_884cecb0a93345c980b7781c1d5a0ad3",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://reqres.in/api/users?id=111&email=tobias.funke@reqres.in",
+          "protocol": "https",
+          "host": [
+            "reqres",
+            "in"
+          ],
+          "path": [
+            "api",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "111"
+            },
+            {
+              "key": "email",
+              "value": "tobias.funke@reqres.in",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SingleUser_Path_params",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres_884cecb0a93345c980b7781c1d5a0ad3",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURI}}/api/users/2",
+          "host": [
+            "{{baseURI}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SingleUser_Path_params Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"tc01\",function(){\r",
+              " console.log(\"Hello\");\r",
+              " });\r",
+              "\r",
+              "pm.test(\"tc02\",function(){\r",
+              " console.log(\"Hi\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"tco3\",function(){\r",
+              " const responsebody = pm.response.json();\r",
+              " const responsecode = pm.response.code;\r",
+              " const responsestatus = pm.response.status;\r",
+              " console.log(responsebody);\r",
+              " console.log(responsecode);\r",
+              " console.log(responsestatus);\r",
+              " pm.expect(responsecode).to.eql(404);\r",
+              " pm.expect(responsebody).to.eql({});\r",
+              " pm.expect(responsebody).to.not.eql(\"hi\");\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres_884cecb0a93345c980b7781c1d5a0ad3",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURI}}/api/users/Janet",
+          "host": [
+            "{{baseURI}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "Janet"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURI",
+      "value": "https://app.reqres.in/"
+    }
+  ]
+}
