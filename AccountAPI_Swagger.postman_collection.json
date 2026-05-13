@@ -7,7 +7,7 @@
   },
   "item": [
     {
-      "name": "New Request",
+      "name": "Swagger_Authorize",
       "request": {
         "auth": {
           "type": "noauth"
@@ -45,7 +45,7 @@
       "response": []
     },
     {
-      "name": "New Request Copy",
+      "name": "Swagger_GenerateToken",
       "request": {
         "auth": {
           "type": "noauth"
@@ -83,12 +83,15 @@
       "response": []
     },
     {
-      "name": "New Request Copy 2",
+      "name": "Swagger_GenerateToken Copy",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
       "request": {
         "auth": {
           "type": "noauth"
         },
-        "method": "POST",
+        "method": "OPTIONS",
         "header": [
           {
             "key": "",
@@ -121,10 +124,17 @@
       "response": []
     },
     {
-      "name": "New Request Copy 3",
+      "name": "Swagger_User",
       "request": {
         "auth": {
-          "type": "noauth"
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InNuaWdkaGFrb3Bwb2x1IiwicGFzc3dvcmQiOiJKaXNobmF2QDIxIiwiaWF0IjoxNzc4NTA3NDQ5fQ.WHb01PS2NEwJ0rYsWgyTBbh98kUx518kas7tVTooKDI",
+              "type": "string"
+            }
+          ]
         },
         "method": "POST",
         "header": [
@@ -136,8 +146,41 @@
           }
         ],
         "body": {
+          "mode": "file",
+          "file": {}
+        },
+        "url": {
+          "raw": "{{ baseURI}}/Account/v1/User",
+          "host": [
+            "{{ baseURI}}"
+          ],
+          "path": [
+            "Account",
+            "v1",
+            "User"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Swagger_Delete",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"userName\": \"snigdhakoppolu\",\r\n  \"password\": \"Jishnav@21\"\r\n}",
+          "raw": "",
           "options": {
             "raw": {
               "language": "json"
@@ -145,14 +188,50 @@
           }
         },
         "url": {
-          "raw": "{{ baseURI}}/Account/v1/GenerateToken",
+          "raw": "{{ baseURI}}/Account/v1/User/snigdhakoppolu",
           "host": [
             "{{ baseURI}}"
           ],
           "path": [
             "Account",
             "v1",
-            "GenerateToken"
+            "User",
+            "snigdhakoppolu"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Swagger_User2",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "Jishnav@279",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "snigdha_sk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{ baseURI}}/Account/v1/User/{{userid}}",
+          "host": [
+            "{{ baseURI}}"
+          ],
+          "path": [
+            "Account",
+            "v1",
+            "User",
+            "{{userid}}"
           ]
         }
       },
@@ -189,6 +268,7 @@
       "value": ""
     },
     {
+      "key": "userid",
       "value": ""
     }
   ]
