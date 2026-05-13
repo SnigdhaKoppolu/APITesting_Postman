@@ -71,6 +71,134 @@
       "response": []
     },
     {
+      "name": "ListUsers_Head",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"tc01\", function(){\r",
+              "    console.log(\"hello\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"tc02\", function(){\r",
+              "    console.log(\"hi\");\r",
+              "} );\r",
+              "\r",
+              "pm.test(\"tc03\", function(){\r",
+              "    const responsebody = pm.response.json();\r",
+              "    const responsecode = pm.response.code;\r",
+              "    const responsestatus = pm.response.status;\r",
+              "    const id12 = responsebody.data[0].id;\r",
+              "    const page = responsebody.page;\r",
+              "\r",
+              "    let size = responsebody.data.length;\r",
+              "\r",
+              "    console.log(size);\r",
+              "    console.log(id12);\r",
+              "    console.log(page);\r",
+              "    console.log(responsebody);\r",
+              "    console.log(responsecode);\r",
+              "    console.log(responsestatus);\r",
+              "    \r",
+              "    pm.expect(responsecode).to.eql(200);\r",
+              "    pm.expect(responsestatus).to.eql(\"OK\");\r",
+              "    pm.expect(responsebody).to.not.eql({});\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "HEAD",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres_884cecb0a93345c980b7781c1d5a0ad3",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURI}}/api/users",
+          "host": [
+            "{{baseURI}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ListUsers_Options",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"tc01\", function(){\r",
+              "    console.log(\"hello\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"tc02\", function(){\r",
+              "    console.log(\"hi\");\r",
+              "} );\r",
+              "\r",
+              "pm.test(\"tc03\", function(){\r",
+              "    const responsebody = pm.response.json();\r",
+              "    const responsecode = pm.response.code;\r",
+              "    const responsestatus = pm.response.status;\r",
+              "    const id12 = responsebody.data[0].id;\r",
+              "    const page = responsebody.page;\r",
+              "\r",
+              "    let size = responsebody.data.length;\r",
+              "\r",
+              "    console.log(size);\r",
+              "    console.log(id12);\r",
+              "    console.log(page);\r",
+              "    console.log(responsebody);\r",
+              "    console.log(responsecode);\r",
+              "    console.log(responsestatus);\r",
+              "    \r",
+              "    pm.expect(responsecode).to.eql(200);\r",
+              "    pm.expect(responsestatus).to.eql(\"OK\");\r",
+              "    pm.expect(responsebody).to.not.eql({});\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "HEAD",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres_884cecb0a93345c980b7781c1d5a0ad3",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURI}}/api/users",
+          "host": [
+            "{{baseURI}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
       "name": "ListUser_Query_Params",
       "event": [
         {
